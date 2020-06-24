@@ -1,164 +1,164 @@
 --
---    Copyright 2016 the original author or authors.
+--    COPYRIGHT 2016 THE ORIGINAL AUTHOR OR AUTHORS.
 --
---    Licensed under the Apache License, Version 2.0 (the "License");
---    you may not use this file except in compliance with the License.
---    You may obtain a copy of the License at
+--    LICENSED UNDER THE APACHE LICENSE, VERSION 2.0 (THE "LICENSE");
+--    YOU MAY NOT USE THIS FILE EXCEPT IN COMPLIANCE WITH THE LICENSE.
+--    YOU MAY OBTAIN A COPY OF THE LICENSE AT
 --
---       http://www.apache.org/licenses/LICENSE-2.0
+--       HTTP://WWW.APACHE.ORG/LICENSES/LICENSE-2.0
 --
---    Unless required by applicable law or agreed to in writing, software
---    distributed under the License is distributed on an "AS IS" BASIS,
---    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
---    See the License for the specific language governing permissions and
---    limitations under the License.
+--    UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING, SOFTWARE
+--    DISTRIBUTED UNDER THE LICENSE IS DISTRIBUTED ON AN "AS IS" BASIS,
+--    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
+--    SEE THE LICENSE FOR THE SPECIFIC LANGUAGE GOVERNING PERMISSIONS AND
+--    LIMITATIONS UNDER THE LICENSE.
 --
 
-create table supplier (
-    suppid int not null,
-    name varchar(80) null,
-    status varchar(2) not null,
-    addr1 varchar(80) null,
-    addr2 varchar(80) null,
-    city varchar(80) null,
-    state varchar(80) null,
-    zip varchar(5) null,
-    phone varchar(80) null,
-    constraint pk_supplier primary key (suppid)
+CREATE TABLE SUPPLIER (
+    SUPPID INT NOT NULL,
+    NAME VARCHAR(80) NULL,
+    STATUS VARCHAR(2) NOT NULL,
+    ADDR1 VARCHAR(80) NULL,
+    ADDR2 VARCHAR(80) NULL,
+    CITY VARCHAR(80) NULL,
+    STATE VARCHAR(80) NULL,
+    ZIP VARCHAR(5) NULL,
+    PHONE VARCHAR(80) NULL,
+    CONSTRAINT PK_SUPPLIER PRIMARY KEY (SUPPID)
 );
 
-create table signon (
-    username varchar(25) not null,
-    password varchar(80)  not null,
-    constraint pk_signon primary key (username)
+CREATE TABLE SIGNON (
+    USERNAME VARCHAR(25) NOT NULL,
+    PASSWORD VARCHAR(80)  NOT NULL,
+    CONSTRAINT PK_SIGNON PRIMARY KEY (USERNAME)
 );
 
-create table account (
-    userid varchar(80) not null,
-    email varchar(80) not null,
-    firstname varchar(80) not null,
-    lastname varchar(80) not null,
-    status varchar(2)  null,
-    addr1 varchar(80) not null,
-    addr2 varchar(40) null,
-    city varchar(80) not  null,
-    state varchar(80) not null,
-    zip varchar(20) not null,
-    country varchar(20) not null,
-    phone varchar(80) not null,
-    constraint pk_account primary key (userid)
+CREATE TABLE ACCOUNT (
+    USERID VARCHAR(80) NOT NULL,
+    EMAIL VARCHAR(80) NOT NULL,
+    FIRSTNAME VARCHAR(80) NOT NULL,
+    LASTNAME VARCHAR(80) NOT NULL,
+    STATUS VARCHAR(2)  NULL,
+    ADDR1 VARCHAR(80) NOT NULL,
+    ADDR2 VARCHAR(40) NULL,
+    CITY VARCHAR(80) NOT  NULL,
+    STATE VARCHAR(80) NOT NULL,
+    ZIP VARCHAR(20) NOT NULL,
+    COUNTRY VARCHAR(20) NOT NULL,
+    PHONE VARCHAR(80) NOT NULL,
+    CONSTRAINT PK_ACCOUNT PRIMARY KEY (USERID)
 );
 
-create table profile (
-    userid varchar(80) not null,
-    langpref varchar(80) not null,
-    favcategory varchar(30),
-    mylistopt int,
-    banneropt int,
-    constraint pk_profile primary key (userid)
+CREATE TABLE PROFILE (
+    USERID VARCHAR(80) NOT NULL,
+    LANGPREF VARCHAR(80) NOT NULL,
+    FAVCATEGORY VARCHAR(30),
+    MYLISTOPT INT,
+    BANNEROPT INT,
+    CONSTRAINT PK_PROFILE PRIMARY KEY (USERID)
 );
 
-create table bannerdata (
-    favcategory varchar(80) not null,
-    bannername varchar(255)  null,
-    constraint pk_bannerdata primary key (favcategory)
+CREATE TABLE BANNERDATA (
+    FAVCATEGORY VARCHAR(80) NOT NULL,
+    BANNERNAME VARCHAR(255)  NULL,
+    CONSTRAINT PK_BANNERDATA PRIMARY KEY (FAVCATEGORY)
 );
 
-create table orders (
-    orderid int not null,
-    userid varchar(80) not null,
-    orderdate timestamp not null,
-    shipaddr1 varchar(80) not null,
-    shipaddr2 varchar(80) null,
-    shipcity varchar(80) not null,
-    shipstate varchar(80) not null,
-    shipzip varchar(20) not null,
-    shipcountry varchar(20) not null,
-    billaddr1 varchar(80) not null,
-    billaddr2 varchar(80)  null,
-    billcity varchar(80) not null,
-    billstate varchar(80) not null,
-    billzip varchar(20) not null,
-    billcountry varchar(20) not null,
-    courier varchar(80) not null,
-    totalprice decimal(10,2) not null,
-    billtofirstname varchar(80) not null,
-    billtolastname varchar(80) not null,
-    shiptofirstname varchar(80) not null,
-    shiptolastname varchar(80) not null,
-    creditcard varchar(80) not null,
-    exprdate varchar(7) not null,
-    cardtype varchar(80) not null,
-    locale varchar(80) not null,
-    constraint pk_orders primary key (orderid)
+CREATE TABLE ORDERS (
+    ORDERID INT NOT NULL,
+    USERID VARCHAR(80) NOT NULL,
+    ORDERDATE TIMESTAMP NOT NULL,
+    SHIPADDR1 VARCHAR(80) NOT NULL,
+    SHIPADDR2 VARCHAR(80) NULL,
+    SHIPCITY VARCHAR(80) NOT NULL,
+    SHIPSTATE VARCHAR(80) NOT NULL,
+    SHIPZIP VARCHAR(20) NOT NULL,
+    SHIPCOUNTRY VARCHAR(20) NOT NULL,
+    BILLADDR1 VARCHAR(80) NOT NULL,
+    BILLADDR2 VARCHAR(80)  NULL,
+    BILLCITY VARCHAR(80) NOT NULL,
+    BILLSTATE VARCHAR(80) NOT NULL,
+    BILLZIP VARCHAR(20) NOT NULL,
+    BILLCOUNTRY VARCHAR(20) NOT NULL,
+    COURIER VARCHAR(80) NOT NULL,
+    TOTALPRICE DECIMAL(10,2) NOT NULL,
+    BILLTOFIRSTNAME VARCHAR(80) NOT NULL,
+    BILLTOLASTNAME VARCHAR(80) NOT NULL,
+    SHIPTOFIRSTNAME VARCHAR(80) NOT NULL,
+    SHIPTOLASTNAME VARCHAR(80) NOT NULL,
+    CREDITCARD VARCHAR(80) NOT NULL,
+    EXPRDATE VARCHAR(7) NOT NULL,
+    CARDTYPE VARCHAR(80) NOT NULL,
+    LOCALE VARCHAR(80) NOT NULL,
+    CONSTRAINT PK_ORDERS PRIMARY KEY (ORDERID)
 );
 
-create table orderstatus (
-    orderid int not null,
-    linenum int not null,
-    timestamp date not null,
-    status varchar(2) not null,
-    constraint pk_orderstatus primary key (orderid, linenum)
+CREATE TABLE ORDERSTATUS (
+    ORDERID INT NOT NULL,
+    LINENUM INT NOT NULL,
+    TIMESTAMP DATE NOT NULL,
+    STATUS VARCHAR(2) NOT NULL,
+    CONSTRAINT PK_ORDERSTATUS PRIMARY KEY (ORDERID, LINENUM)
 );
 
-create table orderlines (
-    orderid int not null,
-    linenum int not null,
-    itemid varchar(10) not null,
-    quantity int not null,
-    unitprice decimal(10,2) not null,
-    constraint pk_lineitem primary key (orderid, linenum)
+CREATE TABLE ORDERLINES (
+    ORDERID INT NOT NULL,
+    LINENUM INT NOT NULL,
+    ITEMID VARCHAR(10) NOT NULL,
+    QUANTITY INT NOT NULL,
+    UNITPRICE DECIMAL(10,2) NOT NULL,
+    CONSTRAINT PK_LINEITEM PRIMARY KEY (ORDERID, LINENUM)
 );
 
-create table category (
-    catid varchar(10) not null,
-    name varchar(80) null,
-    descn varchar(255) null,
-    constraint pk_category primary key (catid)
+CREATE TABLE CATEGORY (
+    CATID VARCHAR(10) NOT NULL,
+    NAME VARCHAR(80) NULL,
+    DESCN VARCHAR(255) NULL,
+    CONSTRAINT PK_CATEGORY PRIMARY KEY (CATID)
 );
 
-create table product (
-    productid varchar(10) not null,
-    category varchar(10) not null,
-    name varchar(80) null,
-    descn varchar(255) null,
-    constraint pk_product primary key (productid),
-        constraint fk_product_1 foreign key (category)
-        references category (catid)
+CREATE TABLE PRODUCT (
+    PRODUCTID VARCHAR(10) NOT NULL,
+    CATEGORY VARCHAR(10) NOT NULL,
+    NAME VARCHAR(80) NULL,
+    DESCN VARCHAR(255) NULL,
+    CONSTRAINT PK_PRODUCT PRIMARY KEY (PRODUCTID),
+        CONSTRAINT FK_PRODUCT_1 FOREIGN KEY (CATEGORY)
+        REFERENCES CATEGORY (CATID)
 );
 
-create index productCat on product (category);
-create index productName on product (name);
+CREATE INDEX PRODUCTCAT ON PRODUCT (CATEGORY);
+CREATE INDEX PRODUCTNAME ON PRODUCT (NAME);
 
-create table item (
-    itemid varchar(10) not null,
-    productid varchar(10) not null,
-    listprice decimal(10,2) null,
-    unitcost decimal(10,2) null,
-    supplier int null,
-    status varchar(2) null,
-    attr1 varchar(80) null,
-    attr2 varchar(80) null,
-    attr3 varchar(80) null,
-    attr4 varchar(80) null,
-    attr5 varchar(80) null,
-    constraint pk_item primary key (itemid),
-        constraint fk_item_1 foreign key (productid)
-        references product (productid),
-        constraint fk_item_2 foreign key (supplier)
-        references supplier (suppid)
+CREATE TABLE ITEM (
+    ITEMID VARCHAR(10) NOT NULL,
+    PRODUCTID VARCHAR(10) NOT NULL,
+    LISTPRICE DECIMAL(10,2) NULL,
+    UNITCOST DECIMAL(10,2) NULL,
+    SUPPLIER INT NULL,
+    STATUS VARCHAR(2) NULL,
+    ATTR1 VARCHAR(80) NULL,
+    ATTR2 VARCHAR(80) NULL,
+    ATTR3 VARCHAR(80) NULL,
+    ATTR4 VARCHAR(80) NULL,
+    ATTR5 VARCHAR(80) NULL,
+    CONSTRAINT PK_ITEM PRIMARY KEY (ITEMID),
+        CONSTRAINT FK_ITEM_1 FOREIGN KEY (PRODUCTID)
+        REFERENCES PRODUCT (PRODUCTID),
+        CONSTRAINT FK_ITEM_2 FOREIGN KEY (SUPPLIER)
+        REFERENCES SUPPLIER (SUPPID)
 );
 
-create index itemProd on item (productid);
+CREATE INDEX ITEMPROD ON ITEM (PRODUCTID);
 
-create table inventory (
-    itemid varchar(10) not null,
-    qty int not null,
-    constraint pk_inventory primary key (itemid)
+CREATE TABLE INVENTORY (
+    ITEMID VARCHAR(10) NOT NULL,
+    QTY INT NOT NULL,
+    CONSTRAINT PK_INVENTORY PRIMARY KEY (ITEMID)
 );
 
-CREATE TABLE sequence(
-    name               varchar(30)  not null,
-    nextid             int          not null,
-    constraint pk_sequence primary key (name)
+CREATE TABLE SEQUENCE(
+    NAME               VARCHAR(30)  NOT NULL,
+    NEXTID             INT          NOT NULL,
+    CONSTRAINT PK_SEQUENCE PRIMARY KEY (NAME)
 );
