@@ -64,7 +64,7 @@ public class Messages implements Iterable<Messages.Message>, Serializable {
 		return this;
 	}
 
-	public static class Message {
+	public static class Message implements Serializable {
 		private final String type;
 		private final String text;
 		private Message(String type, String text) {
